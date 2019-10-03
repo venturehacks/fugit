@@ -16,10 +16,13 @@ describe Fugit::Nat do
 
       {
 
+        'every day' => '0 0 * * *',
         'every day at five' => '0 5 * * *',
+        'every weekday' => '0 0 * * 1-5',
         'every weekday at five' => '0 5 * * 1-5',
         'every weekday at five pm' => '0 17 * * 1-5',
         'every day at 5 pm' => '0 17 * * *',
+        'every tuesday' => '0 0 * * 2',
         'every tuesday at 5 pm' => '0 17 * * 2',
         'every wed at 5 pm' => '0 17 * * 3',
         'every day at 16:30' => '30 16 * * *',
@@ -43,6 +46,7 @@ describe Fugit::Nat do
         'every 1 hour' => '0 * * * *',
         'every 1 month' => '0 0 1 * *',
         'every 1 second' => '* * * * * *',
+        'every 2 months' => '0 0 1 */2 *',
 
         #'every 1st of the month at midnight' => '',
         #'at 5 after 4, everyday' => '',
@@ -58,6 +62,7 @@ describe Fugit::Nat do
           #
           # gh-24 see below
 
+        'every tuesday and monday' => '0 0 * * 1,2',
         'every tuesday and monday at 5pm' => '0 17 * * 1,2',
         'every wed or Monday at 5pm and 11' => '0 11,17 * * 1,3',
         'every Mon,Tue,Wed,Thu,Fri at 18:00' => '0 18 * * 1,2,3,4,5',
@@ -78,6 +83,7 @@ describe Fugit::Nat do
           #
           # gh-29
 
+        'every 3 days' => '0 0 */3 * *',
         'every 3 days at 18:00' => '0 18 */3 * *',
 
       }.each do |nat, cron|

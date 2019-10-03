@@ -94,6 +94,8 @@ module Fugit
         h[:min] ||= [ 0 ]
         h[:min].uniq!
 
+
+        h[:hou] = [ 0 ] if h[:hou].empty?
         h[:hou].uniq!
         h[:hou].sort!
 
