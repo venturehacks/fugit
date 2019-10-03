@@ -49,7 +49,7 @@ module Fugit
           if ms.size <= 1
             [ parse_cron(a, opts) ]
           else
-            dhs.collect { |dh| parse_cron([ dh ] + aa, opts) }
+            dhs.collect { |dh| parse_cron(aa + [ dh ], opts) }
           end
 
         fail ArgumentError.new(
@@ -85,13 +85,16 @@ module Fugit
             h[:tz] = val
           elsif key == :duration
             process_duration(h, *val[0].to_h.first)
+          elsif key == :flag && val == "at"
+            h[:hou] = []
+            h[:min] = nil
           end
         end
 
         h[:min] ||= [ 0 ]
         h[:min].uniq!
 
-        h[:hou].uniq!;
+        h[:hou].uniq!
         h[:hou].sort!
 
         h[:dow].sort! if h[:dow]

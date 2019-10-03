@@ -78,6 +78,8 @@ describe Fugit::Nat do
           #
           # gh-29
 
+        'every 3 days at 18:00' => '0 18 */3 * *',
+
       }.each do |nat, cron|
 
         it "parses #{nat.inspect} into #{cron.inspect}" do
